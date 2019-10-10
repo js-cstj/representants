@@ -1,0 +1,60 @@
+{
+	"objects": [{
+		"email": "ptrudeau@ville.dorval.qc.ca",
+		"last_name": "Trudeau",
+		"gender": "",
+		"photo_url": "https://www.ville.dorval.qc.ca/medias/images/fr/cite/Trudeau.jpg",
+		"source_url": "http://www.ville.dorval.qc.ca/en/the-city/page/council-members",
+		"extra": {},
+		"district_name": "District 1",
+		"related": {
+			"representative_set_url": "/representative-sets/conseil-municipal-de-dorval/",
+			"boundary_url": "/boundaries/dorval-districts/district-1/"
+		},
+		"party_name": "",
+		"url": "",
+		"offices": [],
+		"first_name": "Paul",
+		"elected_office": "Conseiller",
+		"representative_set_name": "Conseil municipal de Dorval",
+		"name": "Paul Trudeau",
+		"personal_url": ""
+	}, {
+		"email": "justin.trudeau@parl.gc.ca",
+		"last_name": "Trudeau",
+		"gender": "",
+		"photo_url": "http://www.ourcommons.ca/Parliamentarians/Images/OfficialMPPhotos/42/TrudeauJustin_LIB.jpg",
+		"source_url": "http://www.parl.gc.ca/Parliamentarians/en/members?view=ListAll",
+		"extra": {},
+		"district_name": "Papineau",
+		"related": {
+			"representative_set_url": "/representative-sets/house-of-commons/",
+			"boundary_url": "/boundaries/federal-electoral-districts/24055/"
+		},
+		"party_name": "Liberal",
+		"url": "http://www.parl.gc.ca/Parliamentarians/en/members/Justin-Trudeau(58733)",
+		"offices": [{
+			"postal": "House of Commons\nOttawa ON  K1A 0A6",
+			"tel": "1 613 992-4211",
+			"fax": "1 613 941-6900",
+			"type": "legislature"
+		}, {
+			"postal": "1100 Cr\u00e9mazie East\n(Main Office)\nSuite 220\nMontr\u00e9al QC  H2P 2X2",
+			"tel": "1 514 277-6020",
+			"fax": "1 514 277-3454",
+			"type": "constituency"
+		}],
+		"first_name": "Justin",
+		"elected_office": "MP",
+		"representative_set_name": "House of Commons",
+		"name": "Justin Trudeau",
+		"personal_url": ""
+	}],
+	"meta": {
+		"next": null,
+		"total_count": 2,
+		"previous": null,
+		"offset": 0,
+		"limit": 20
+	}
+}

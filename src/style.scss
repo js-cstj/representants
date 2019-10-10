@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Atma:300,400,500,600,700&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Passion+One:400,700,900&display=swap');
 html {
 	height: 100%;
 	font-size: 16px;
-	font-family: arial;
+	font-family: "Passion One", "Atma", arial;
 }
 body {
 	height: 100%;
@@ -17,11 +19,32 @@ body {
 		background-color: #EEE;
 		display: flex;
 		justify-content: space-between;
+		background-color: goldenrod;
+		background-image: repeating-linear-gradient(
+			-45deg, 
+			rgba(255,255,255,.2)18pt, rgba(255,255,255,0) 21pt, 
+			rgba(255,255,255,.2)36pt, rgba(255,255,255,0) 50pt, 
+			rgba(255,255,255,.2)54pt, rgba(255,255,255,0) 60pt, 
+			rgba(255,255,255,.2)62pt, rgba(255,255,255,0) 72pt,
+			rgba(255,255,255,.2)100pt
+			);
+		animation: shines infinite;
 	}
 	& > header {
 		order: -1000;
+		color: darkgoldenrod;
+		text-shadow: .1em .1em .3em rgba(0,0,0,1);
 		h1 {
+			line-height: 1;
+			font-weight: 900;
 			margin: 0;
+			margin-bottom: -.35em;
+			position: relative;
+			// font-size: 6em;
+			font-size: 8vw;
+			text-align: center;
+			justify-self: center;
+			flex: 1 0 auto;
 		}
 	}
 	& > footer {
@@ -34,9 +57,78 @@ body {
 }
 
 #app {
+	background-color: darkgoldenrod;
 	padding: 1em;
-	display: flex;
+	padding-top: 3em;
+	// display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
+span.img {
+	display: block;
+	width: 5em;
+	height: 5em;
+	border-radius: .5em;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center 25%;
+}
+
+div.list {
+	display: grid;
+	gap: .5em;
+	font-size: 24px;
+	justify-content: center;
+	grid-template-columns: repeat(auto-fit, 38ch);
+	& > * {
+		border: solid;
+		border-radius: .25em;
+		padding: 1em;
+		box-shadow: .1em .1em .2em rgba(0,0,0,.5);
+	}
+}
+
+div.person {
+	background-color: white;
+	display: grid;
+	// width: 20em;
+	gap: 0 1ch;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas: "nom photo" "role photo" "lieu photo";
+	line-height: 1;
+	a.email {
+		grid-area: nom;
+		display: grid;
+		justify-content: space-between;
+		grid-template-columns: auto auto;
+		.separateur::before {
+			content: ", ";
+		}
+	}
+	a {
+		color: inherit;
+		text-decoration: inherit;
+	}
+	.elected_office {
+		grid-area: role;
+		align-self: center;
+		justify-self: center;
+		text-align: center;
+	}
+	.last_name {
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+	.representative_set_name {
+		grid-area: lieu;
+		align-self: flex-end;
+		font-style: italic;
+		font-size: smaller;
+		text-align: center;
+	}
+	.img {
+		grid-area: photo;
+	}
+}
