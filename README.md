@@ -1,13 +1,5 @@
-# application-base
-Application de base pour débuter un projet
+# Nos représentants
+Application qui affiche une liste d'élus
 
-## Description
-Description à venir
-
-## Particularités
-
-- Compléter
-
-## Variantes et ajouts possibles
-
-- Compléter
+## Exercice
+Compléter les fonctions se trouvant dans App.js

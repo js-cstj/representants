@@ -12,23 +12,37 @@ body {
 
 #interface {
   min-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 #interface > header, #interface > footer {
-  flex: 0 1 auto;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
   padding: .5em 1em;
   background-color: #EEE;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background-color: goldenrod;
   background-image: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 18pt, rgba(255, 255, 255, 0) 21pt, rgba(255, 255, 255, 0.2) 36pt, rgba(255, 255, 255, 0) 50pt, rgba(255, 255, 255, 0.2) 54pt, rgba(255, 255, 255, 0) 60pt, rgba(255, 255, 255, 0.2) 62pt, rgba(255, 255, 255, 0) 72pt, rgba(255, 255, 255, 0.2) 100pt);
-  animation: shines infinite;
+  -webkit-animation: shines infinite;
+          animation: shines infinite;
 }
 
 #interface > header {
-  order: -1000;
+  -webkit-box-ordinal-group: -999;
+      -ms-flex-order: -1000;
+          order: -1000;
   color: darkgoldenrod;
   text-shadow: 0.1em 0.1em 0.3em black;
 }
@@ -41,25 +55,36 @@ body {
   position: relative;
   font-size: 8vw;
   text-align: center;
-  justify-self: center;
-  flex: 1 0 auto;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
 }
 
 #interface > footer {
-  order: 1000;
+  -webkit-box-ordinal-group: 1001;
+      -ms-flex-order: 1000;
+          order: 1000;
   font-size: smaller;
 }
 
 #interface > .body {
-  flex: 1 0 auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
 }
 
 #app {
   background-color: darkgoldenrod;
   padding: 1em;
   padding-top: 3em;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 span.img {
@@ -73,35 +98,49 @@ span.img {
 }
 
 div.list {
+  display: -ms-grid;
   display: grid;
   gap: .5em;
   font-size: 24px;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, 38ch);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-grid-columns: (38ch)[auto-fit];
+      grid-template-columns: repeat(auto-fit, 38ch);
 }
 
 div.list > * {
   border: solid;
   border-radius: .25em;
   padding: 1em;
-  box-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+          box-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
 }
 
 div.person {
   background-color: white;
+  display: -ms-grid;
   display: grid;
   gap: 0 1ch;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas: "nom photo" "role photo" "lieu photo";
+  -ms-grid-columns: 1fr auto;
+      grid-template-columns: 1fr auto;
+  -ms-grid-rows: auto 1fr auto;
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas: "nom photo" "role photo" "lieu photo";
   line-height: 1;
 }
 
 div.person a.email {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
   grid-area: nom;
+  display: -ms-grid;
   display: grid;
-  justify-content: space-between;
-  grid-template-columns: auto auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
 }
 
 div.person a.email .separateur::before {
@@ -114,9 +153,14 @@ div.person a {
 }
 
 div.person .elected_office {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
   grid-area: role;
-  align-self: center;
-  justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
   text-align: center;
 }
 
@@ -126,13 +170,20 @@ div.person .last_name {
 }
 
 div.person .representative_set_name {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
   grid-area: lieu;
-  align-self: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
   font-style: italic;
   font-size: smaller;
   text-align: center;
 }
 
 div.person .img {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 2;
   grid-area: photo;
 }
+/*# sourceMappingURL=style.css.map */
