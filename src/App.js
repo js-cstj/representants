@@ -8,11 +8,19 @@ export default class App {
 	 */
 	static main() {
 		var adresse;
-		// adresse = "https://represent.opennorth.ca/representatives/quebec-assemblee-nationale/?limit=124";
-		// adresse = "https://represent.opennorth.ca/representatives/conseil-municipal-de-saint-jerome/";
-		// adresse = "https://represent.opennorth.ca/representatives/?last_name=Tremblay";
-		// adresse = "https://represent.opennorth.ca/representatives/conseil-municipal-de-montreal/?limit=1000";
 		adresse = "exemple.json";
+		if (window.location.search === "?1") {
+			adresse = "https://represent.opennorth.ca/representatives/quebec-assemblee-nationale/?limit=1000";
+		}
+		if (window.location.search === "?2") {
+			adresse = "https://represent.opennorth.ca/representatives/conseil-municipal-de-saint-jerome/";
+		}
+		if (window.location.search === "?3") {
+			adresse = "https://represent.opennorth.ca/representatives/?last_name=Tremblay";
+		}
+		if (window.location.search === "?4") {
+			adresse = "https://represent.opennorth.ca/representatives/conseil-municipal-de-montreal/?limit=1000";
+		}
 		this.chargerJson(adresse).then(data => {
 			this.app = document.getElementById("app");
 			this.app.appendChild(this.html_list(data.objects));	
