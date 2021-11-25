@@ -54,6 +54,15 @@ body {
 	& > .body {
 		flex: 1 0 auto;
 	}
+	& > .recherche {
+		display: flex;
+		justify-content: center;
+		padding-top: 1em;
+		padding-bottom: 1em;
+		form {
+			position: relative;
+		}
+	}
 }
 
 #app {
@@ -82,6 +91,7 @@ div.list {
 	justify-content: center;
 	grid-template-columns: repeat(auto-fit, 38ch);
 	& > * {
+		background-color: white;
 		border: solid;
 		border-radius: .25em;
 		padding: 1em;
@@ -90,7 +100,6 @@ div.list {
 }
 
 div.person {
-	background-color: white;
 	display: grid;
 	// width: 20em;
 	gap: 0 1ch;
@@ -130,5 +139,13 @@ div.person {
 	}
 	.img {
 		grid-area: photo;
+	}
+}
+.representative_sets {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	li {
+		border: 2px solid red;
 	}
 }

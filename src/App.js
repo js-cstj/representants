@@ -7,8 +7,10 @@ export default class App {
 	 * Méthode principale. Sera typiquement appelée après le chargement de la page.
 	 */
 	static main() {
+		this.app = document.getElementById("app");
 		var adresse;
-		adresse = "exemple.json";
+		// adresse = "exemple.json";
+		adresse = "";
 		if (window.location.search === "?1") {
 			adresse = "https://represent.opennorth.ca/representatives/quebec-assemblee-nationale/?limit=1000";
 		}
@@ -21,24 +23,45 @@ export default class App {
 		if (window.location.search === "?4") {
 			adresse = "https://represent.opennorth.ca/representatives/conseil-municipal-de-montreal/?limit=1000";
 		}
-		this.chargerJson(adresse).then(data => {
-			this.app = document.getElementById("app");
-			this.app.appendChild(this.html_list(data.objects));	
+		if (adresse) {
+			this.chargerJson(adresse).then(data => {
+				this.app.appendChild(this.html_list(data.objects));	
+			});
+		} else {
+			this.chargerJson("https://represent.opennorth.ca/representative-sets/?limit=2000").then(data => {
+				this.app.appendChild(this.html_representativeSets(data.objects));	
+			});
+		}
+		document.getElementById("recherche").addEventListener("submit", e => {
+			e.preventDefault();
+			if (e.currentTarget.type.value === "cp") {
+				var q = e.currentTarget.q.value.replace(/ /g, "");
+				e.currentTarget.q.value = q;
+				var adresse = "https://represent.opennorth.ca/postcodes/"+q+"/";
+				this.chargerJson(adresse).then(data => {
+					console.log(data);
+					while(this.app.firstChild) {
+						this.app.firstChild.remove();
+					}
+					var persons = [].concat(data.representatives_centroid, data.representatives_concordance);
+					this.app.appendChild(this.html_list(persons));
+				});
+				
+			}
 		});
 	}
 	/**
 	 * Retourne le div.list qui affiche tous les représentants
-	 * @param {array} objets Un tableau d'objets "person"
+	 * @param {array} persons Un tableau d'objets "person"
 	 * @returns {HTMLElement} Le div.list
 	 */	
-	static html_list(objets) {
+	static html_list(persons) {
 		var resultat = document.createElement("div");
 		resultat.classList.add("list");
-		for (let i = 0; i < objets.length; i += 1) {
-			let objet = objets[i];
-			resultat.appendChild(this.html_person(objet));
+		for (let i = 0; i < persons.length; i += 1) {
+			let person = persons[i];
+			resultat.appendChild(this.html_person(person));
 		}
-		console.log(objets);
 		return resultat;
 	}
 	/**
@@ -66,12 +89,40 @@ export default class App {
 		elected_office.classList.add("elected_office");
 		elected_office.innerHTML = objet.elected_office;
 
-		var representative_set_name = person.appendChild(document.createElement("span"));
+		var representative_set_name = person.appendChild(document.createElement("a"));
 		representative_set_name.classList.add("representative_set_name");
-		representative_set_name.innerHTML = objet.representative_set_name;
+		representative_set_name.innerHTML = "&larr;" + objet.representative_set_name;
+		
+		representative_set_name.addEventListener.click
 
 		var img = person.appendChild(this.html_image(objet));
 		return person;
+	}
+	static html_representativeSets(tRepresentativeSets) {
+		var resultat = document.createElement("div");
+		resultat.classList.add("list");
+		resultat.classList.add("representative_sets");
+		tRepresentativeSets.forEach(representativeSet => {
+			resultat.appendChild(this.html_representativeSet(representativeSet));
+		});
+		return resultat;
+	}
+	static html_representativeSet(objRepresentativeSet) {
+		var resultat = document.createElement("div");
+		resultat.classList.add("representative_set");
+		var a = resultat.appendChild(document.createElement("a"));
+		a.innerHTML = objRepresentativeSet.name;
+		a.href = "https://represent.opennorth.ca" + objRepresentativeSet.related.representatives_url;
+		a.addEventListener("click", e => {
+			e.preventDefault();
+			this.chargerJson(e.currentTarget.href).then(data => {
+				while(this.app.firstChild) {
+					this.app.firstChild.remove();
+				}
+				this.app.appendChild(this.html_list(data.objects));
+			});
+		});
+		return resultat;
 	}
 	/**
 	 * Retourne la balise span contenant la photo du représentant

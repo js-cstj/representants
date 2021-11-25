@@ -13,6 +13,15 @@
 	<div id="interface">
 		<header><h1>Nos représentants</h1></header>
 		<footer><span>&copy; Web 3 - Dynamique</span> <strong>Nos représentants</strong></footer>
+		<div class="recherche">
+			<form action="" id="recherche">
+				<label for="type">Recherche par : </label>
+				<select name="type" id="type">
+					<option value="cp">Code postal</option>
+				</select>
+				<input required type="text" name="q" id="q" pattern="[A-Z][0-9][A-Z] *[0-9][A-Z][0-9]" placeholder="A0A0A0">
+			</form>
+		</div>
 		<div class="body" id="app"></div>
 	</div>
 </body>

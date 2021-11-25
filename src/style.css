@@ -75,6 +75,21 @@ body {
           flex: 1 0 auto;
 }
 
+#interface > .recherche {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#interface > .recherche form {
+  position: relative;
+}
+
 #app {
   background-color: darkgoldenrod;
   padding: 1em;
@@ -110,6 +125,7 @@ div.list {
 }
 
 div.list > * {
+  background-color: white;
   border: solid;
   border-radius: .25em;
   padding: 1em;
@@ -118,7 +134,6 @@ div.list > * {
 }
 
 div.person {
-  background-color: white;
   display: -ms-grid;
   display: grid;
   gap: 0 1ch;
@@ -185,5 +200,15 @@ div.person .img {
   -ms-grid-row-span: 3;
   -ms-grid-column: 2;
   grid-area: photo;
+}
+
+.representative_sets {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.representative_sets li {
+  border: 2px solid red;
 }
 /*# sourceMappingURL=style.css.map */
